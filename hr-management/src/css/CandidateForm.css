@@ -1,0 +1,118 @@
+/* CandidateForm.css */
+
+body {
+  background-color: #f4f6f8;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.candidate-form-container {
+  max-width:800px;
+  margin: 50px auto;
+  padding: 40px 30px;
+  background-color: #ffffff;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08); /* Modern soft shadow */
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+  display: flex;
+  /*  flex-direction: column; */
+  align-items: center;
+  
+}
+
+
+.form-title {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: red;
+  text-shadow: 
+  1px 2px red
+  ;
+  letter-spacing: 1px;
+}
+
+/* Grid layout */
+.candidate-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+/* For future use if you want two-column layout on desktop */
+/*
+@media (min-width: 768px) {
+  .candidate-form {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .form-group.full-width {
+    grid-column: span 2;
+  }
+}
+*/
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: grey;
+  font-size: 20px;
+}
+
+.form-group input,
+.form-group select {
+  padding: 10px 14px;
+  border-radius: 8px;
+  width: 100%;
+  border: 2px dotted blue;
+  font-size: 15px;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #1976d2;
+}
+
+.form-group input[type="file"] {
+  padding: 6px;
+}
+
+.submit-btn {
+  background-color: #1976d2;
+  color: #fff;
+  padding: 14px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.1s ease;
+}
+
+.submit-btn:hover {
+  background-color: #155a9c;
+  transform: scale(1.02);
+}
+
+.submit-btn:disabled {
+  background-color: #a1c5e7;
+  cursor: not-allowed;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .candidate-form-container {
+    margin: 20px;
+    padding: 25px 20px;
+  }
+
+  .form-title {
+    font-size: 1.6rem;
+  }
+}

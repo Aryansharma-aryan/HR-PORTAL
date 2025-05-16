@@ -1,0 +1,81 @@
+.candidate-card-container {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 25px 30px;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.candidate-card-name {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: #222;
+  text-align: center;
+}
+
+.candidate-card-info {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  color: #333;
+  line-height: 1.4;
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+  padding: 12px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.btn-download {
+  background-color: #007bff;
+}
+
+.btn-download:hover {
+  background-color: #0056b3;
+}
+
+.no-resume-msg {
+  margin-top: 20px;
+  text-align: center;
+  font-style: italic;
+  color: #777;
+}
+
+/* Loading, error, empty states */
+
+.candidate-card-loading,
+.candidate-card-error,
+.candidate-card-empty {
+  text-align: center;
+  font-size: 1.25rem;
+  color: #555;
+  margin-top: 50px;
+}
+
+.candidate-card-error {
+  color: red;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .candidate-card-container {
+    margin: 20px;
+    padding: 20px;
+  }
+
+  .candidate-card-name {
+    font-size: 1.5rem;
+  }
+}
