@@ -89,10 +89,21 @@ function Signup() {
   };
 
   return (
-    <div className="container d-flex justify-content-center align-items-center" style={{ minHeight: "100vh" }}>
+    <div
+      className="container-fluid d-flex justify-content-center align-items-center"
+      style={{
+        minHeight: "100vh",
+        background: "linear-gradient(to right, #00c6ff, #0072ff)",
+        padding: "1rem",
+      }}
+    >
       <div
-        className="card p-4 shadow-lg w-100"
-        style={{ maxWidth: "450px", background: "linear-gradient(to right, lightgrey, cyan)" }}
+        className="card shadow-lg p-4 w-100"
+        style={{
+          maxWidth: "450px",
+          borderRadius: "1rem",
+          backgroundColor: "#ffffffee",
+        }}
       >
         <h2 className="text-center mb-4 text-primary">Signup</h2>
         <form onSubmit={handleSubmit}>

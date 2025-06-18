@@ -54,9 +54,25 @@ function Login() {
   };
 
   return (
-    <div className="container d-flex justify-content-center align-items-center" style={{ minHeight: "100vh" }}>
-      <div className="card p-4 shadow-lg" style={{ maxWidth: "400px", width: "100%", background: "linear-gradient(to right, lightgrey, cyan)" }}>
+    <div
+      className="container-fluid d-flex justify-content-center align-items-center"
+      style={{
+        minHeight: "100vh",
+        background: "linear-gradient(to right, #00c6ff, #0072ff)",
+        padding: "1rem",
+      }}
+    >
+      <div
+        className="card shadow-lg p-4"
+        style={{
+          width: "100%",
+          maxWidth: "400px",
+          borderRadius: "1rem",
+          backgroundColor: "#ffffffee",
+        }}
+      >
         <h2 className="text-center mb-4 text-primary">Login</h2>
+
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <input
@@ -81,7 +97,9 @@ function Login() {
             />
           </div>
 
-          {error && <div className="alert alert-danger py-2">{error}</div>}
+          {error && (
+            <div className="alert alert-danger py-2 text-center">{error}</div>
+          )}
 
           <button
             type="submit"
@@ -94,7 +112,7 @@ function Login() {
           <div className="mt-3 text-center">
             <p className="mb-0">
               Don’t have an account?{" "}
-              <Link to="/register" className="text-decoration-none fw-bold">
+              <Link to="/register" className="fw-bold text-decoration-none">
                 Signup
               </Link>
             </p>
