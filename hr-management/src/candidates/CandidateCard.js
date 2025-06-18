@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import '../css/CandidateCard.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const CandidateCard = () => {
   const { id } = useParams();
@@ -19,11 +19,14 @@ const CandidateCard = () => {
       }
 
       try {
-        const response = await fetch(`https://hr-portal-1-xf68.onrender.com/api/getCandidateById/${id}`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const response = await fetch(
+          `https://hr-portal-1-xf68.onrender.com/api/getCandidateById/${id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
 
         if (!response.ok) {
           const errText = await response.text();
@@ -60,44 +63,36 @@ const CandidateCard = () => {
     document.body.removeChild(link);
   };
 
-  if (loading) return <div className="candidate-card-loading">Loading...</div>;
-  if (error) return <div className="candidate-card-error" style={{ color: 'red', fontWeight: 'bold' }}>{error}</div>;
-  if (!candidate) return <div className="candidate-card-empty">No candidate found.</div>;
+  if (loading) return <div className="text-center mt-5">Loading...</div>;
+  if (error) return <div className="alert alert-danger mt-4 text-center">{error}</div>;
+  if (!candidate) return <div className="text-center mt-5">No candidate found.</div>;
 
   return (
-    <div
-      className="candidate-card-container"
-      style={{
-        maxWidth: '600px',
-        margin: '20px auto',
-        padding: '25px',
-        borderRadius: '8px',
-        backgroundColor: '#f5f7fa',
-        boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-        fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
-        color: '#333',
-      }}
-    >
-      <h2 style={{ color: '#2c3e50', marginBottom: '15px', borderBottom: '2px solid #2980b9', paddingBottom: '8px' }}>
-        {candidate.name}
-      </h2>
+    <div className="container mt-5">
+      <div className="card shadow-lg">
+        <div className="card-header bg-primary text-white">
+          <h3 className="mb-0">{candidate.name}</h3>
+        </div>
+        <div className="card-body">
+          <p><strong>Email:</strong> {candidate.email}</p>
+          <p><strong>Phone:</strong> {candidate.phone}</p>
+          <p><strong>Position Applied:</strong> {candidate.position}</p>
 
-      <div style={{ marginBottom: '12px' }}>
-        <h4 style={{ margin: '0 0 4px 0', color: '#2980b9' }}>Email</h4>
-        <p style={{ margin: 0, fontSize: '1rem' }}>{candidate.email}</p>
+          {candidate.skills && (
+            <p><strong>Skills:</strong> {candidate.skills.join(', ')}</p>
+          )}
+
+          {candidate.experience && (
+            <p><strong>Experience:</strong> {candidate.experience} years</p>
+          )}
+
+          {candidate.resume && (
+            <button className="btn btn-success mt-3" onClick={handleDownload}>
+              Download Resume
+            </button>
+          )}
+        </div>
       </div>
-
-      <div style={{ marginBottom: '12px' }}>
-        <h4 style={{ margin: '0 0 4px 0', color: '#2980b9' }}>Phone</h4>
-        <p style={{ margin: 0, fontSize: '1rem' }}>{candidate.phone}</p>
-      </div>
-
-      <div style={{ marginBottom: '12px' }}>
-        <h4 style={{ margin: '0 0 4px 0', color: '#2980b9' }}>Position Applied</h4>
-        <p style={{ margin: 0, fontSize: '1rem' }}>{candidate.position}</p>
-      </div>
-
-
     </div>
   );
 };

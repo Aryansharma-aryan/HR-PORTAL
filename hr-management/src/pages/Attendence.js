@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "../css/Attendence.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const Attendance = () => {
   const [employees, setEmployees] = useState([]);
@@ -8,12 +8,11 @@ const Attendance = () => {
   const [success, setSuccess] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:4000/api/getAllEmployee")
+    fetch("https://hr-portal-1-xf68.onrender.com/api/getAllEmployee")
       .then((res) => res.json())
       .then((data) => {
         setEmployees(data);
 
-        // Initialize attendance from the fetched data
         const initialAttendance = {};
         data.forEach((emp) => {
           initialAttendance[emp._id] = emp.attendanceStatus || "";
@@ -38,10 +37,7 @@ const Attendance = () => {
       status,
     }));
 
-    // ✅ Log what you are sending to the backend
-    console.log("Sending attendance data to backend:", attendanceArray);
-
-    fetch("http://localhost:4000/api/attendance/update", {
+    fetch("https://hr-portal-1-xf68.onrender.com/api/attendance/update", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(attendanceArray),
@@ -51,30 +47,25 @@ const Attendance = () => {
         return res.json();
       })
       .then((data) => {
-        setSuccess("Attendance updated successfully!", data);
+        setSuccess("Attendance updated successfully!");
         setError(null);
       })
       .catch((err) => {
-        setError("Error updating attendance. Please try again.", err);
+        setError("Error updating attendance. Please try again.");
         setSuccess(null);
       });
   };
 
   return (
-    <div className="attendance-container">
-      <h2>Attendance Management</h2>
+    <div className="container mt-5">
+      <h2 className="mb-4 text-center text-primary">Attendance Management</h2>
 
-      {error && <p className="message error-message">{error}</p>}
-      {success && <p className="message success-message">{success}</p>}
+      {error && <div className="alert alert-danger">{error}</div>}
+      {success && <div className="alert alert-success">{success}</div>}
 
-      <div className="table-wrapper">
-        <table
-          className="attendance-table"
-          border="1"
-          cellPadding="10"
-          cellSpacing="0"
-        >
-          <thead>
+      <div className="table-responsive">
+        <table className="table table-bordered table-hover text-center">
+          <thead className="table-dark">
             <tr>
               <th>Profile</th>
               <th>Employee Name</th>
@@ -87,7 +78,7 @@ const Attendance = () => {
           <tbody>
             {employees.length === 0 ? (
               <tr>
-                <td colSpan="6" style={{ textAlign: "center" }}>
+                <td colSpan="6" className="text-center text-muted">
                   No employees found
                 </td>
               </tr>
@@ -95,8 +86,11 @@ const Attendance = () => {
               employees.map((emp) => (
                 <tr key={emp._id}>
                   <td>
-                    <div className="profile-circle">
-                      {emp.name ? emp.name.charAt(0).toUpperCase() : "N/A"}
+                    <div
+                      className="rounded-circle bg-secondary text-white d-flex justify-content-center align-items-center"
+                      style={{ width: "40px", height: "40px", margin: "auto" }}
+                    >
+                      {emp.name ? emp.name.charAt(0).toUpperCase() : "N"}
                     </div>
                   </td>
                   <td>{emp.name || "N/A"}</td>
@@ -105,7 +99,7 @@ const Attendance = () => {
                   <td>{emp.position || "N/A"}</td>
                   <td>
                     <select
-                      className="attendance-select"
+                      className="form-select"
                       value={attendance[emp._id] || ""}
                       onChange={(e) =>
                         handleAttendanceChange(emp._id, e.target.value)
@@ -123,9 +117,11 @@ const Attendance = () => {
         </table>
       </div>
 
-      <button className="save-btn" onClick={handleSaveAttendance}>
-        Save Attendance
-      </button>
+      <div className="text-center mt-4">
+        <button className="btn btn-primary px-4" onClick={handleSaveAttendance}>
+          Save Attendance
+        </button>
+      </div>
     </div>
   );
 };

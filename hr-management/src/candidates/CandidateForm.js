@@ -1,8 +1,7 @@
-// CandidateForm.js
 import React, { useState } from 'react';
 import axios from 'axios';
-import '../css/CandidateForm.css'; // Make sure this path is correct
 import { useNavigate } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const CandidateForm = () => {
   const navigate = useNavigate();
@@ -42,12 +41,16 @@ const CandidateForm = () => {
     try {
       setIsSubmitting(true);
 
-      const res = await axios.post('http://localhost:4000/api/createCandidate', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const res = await axios.post(
+        'https://hr-portal-1-xf68.onrender.com/api/createCandidate',
+        formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       alert('Candidate created successfully!');
       navigate('/candidate-list');
@@ -68,74 +71,85 @@ const CandidateForm = () => {
   };
 
   return (
-    <div className="candidate-form-container"style={{backgroundColor:"lightcyan"}}>
-      <h2 className="form-title">Add Candidate</h2>
-      <form className="candidate-form" onSubmit={handleSubmit}>
-        <div className="form-grid"style={{marginLeft:"30px"}}>
-          <div className="form-group">
-            <label>Name</label>
-            <input
-              type="text"
-              name="name"
-              value={candidateData.name}
-              onChange={handleChange}
-              placeholder="Enter full name"
-              required
-            />
+    <div className="container mt-5">
+      <div className="card shadow p-4 bg-light">
+        <h2 className="card-title mb-4 text-primary">Add Candidate</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="row g-3">
+            <div className="col-md-6">
+              <label className="form-label">Name</label>
+              <input
+                type="text"
+                name="name"
+                className="form-control"
+                value={candidateData.name}
+                onChange={handleChange}
+                placeholder="Enter full name"
+                required
+              />
+            </div>
+
+            <div className="col-md-6">
+              <label className="form-label">Email</label>
+              <input
+                type="email"
+                name="email"
+                className="form-control"
+                value={candidateData.email}
+                onChange={handleChange}
+                placeholder="Enter email"
+                required
+              />
+            </div>
+
+            <div className="col-md-6">
+              <label className="form-label">Phone</label>
+              <input
+                type="text"
+                name="phone"
+                className="form-control"
+                value={candidateData.phone}
+                onChange={handleChange}
+                placeholder="Enter phone number"
+                required
+              />
+            </div>
+
+            <div className="col-md-6">
+              <label className="form-label">Position</label>
+              <input
+                type="text"
+                name="position"
+                className="form-control"
+                value={candidateData.position}
+                onChange={handleChange}
+                placeholder="Enter position"
+                required
+              />
+            </div>
+
+            <div className="col-12">
+              <label className="form-label">Resume (PDF only)</label>
+              <input
+                type="file"
+                name="resume"
+                accept=".pdf"
+                className="form-control"
+                onChange={handleFileChange}
+                required
+              />
+            </div>
           </div>
 
-          <div className="form-group">
-            <label>Email</label>
-            <input
-              type="email"
-              name="email"
-              value={candidateData.email}
-              onChange={handleChange}
-              placeholder="Enter email"
-              required
-            />
-          </div>
-
-          <div className="form-group">
-            <label>Phone</label>
-            <input
-              type="text"
-              name="phone"
-              value={candidateData.phone}
-              onChange={handleChange}
-              placeholder="Enter phone number"
-              required
-            />
-          </div>
-
-          <div className="form-group">
-            <label>Position</label>
-            <input
-              type="text"
-              name="position"
-              value={candidateData.position}
-              onChange={handleChange}
-              placeholder="Enter position"
-              required
-            />
-          </div>
-
-          <div className="form-group">
-            <label>Resume (PDF only)</label>
-            <input 
-              type="file"
-              name="resume"
-              accept=".pdf"
-              onChange={handleFileChange}
-              required
-            />
-          </div>
-        </div>
-
-        <button type="submit" className="submit-btn" disabled={isSubmitting}style={{marginBottomm:"520px",marginLeft:"20px"}}>
-          {isSubmitting ? 'Submitting...' : 'Add'}
-        </button>
-      </form>
+          <button
+            type="submit"
+            className="btn btn-primary mt-4"
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? 'Submitting...' : 'Add Candidate'}
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

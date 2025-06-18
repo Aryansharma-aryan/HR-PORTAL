@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import "../css/Home.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const Home = () => {
   const [candidates, setCandidates] = useState([]);
@@ -9,7 +9,6 @@ const Home = () => {
   const [editId, setEditId] = useState(null);
   const [editData, setEditData] = useState({});
 
-  // Fetch all candidates
   useEffect(() => {
     const fetchCandidates = async () => {
       try {
@@ -29,19 +28,16 @@ const Home = () => {
     fetchCandidates();
   }, []);
 
-  // Start editing
   const handleEditClick = (candidate) => {
     setEditId(candidate._id);
     setEditData({ ...candidate });
   };
 
-  // Cancel editing
   const handleCancelClick = () => {
     setEditId(null);
     setEditData({});
   };
 
-  // Save edited candidate
   const handleSaveClick = async () => {
     try {
       const token = localStorage.getItem("token");
@@ -51,11 +47,9 @@ const Home = () => {
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
-      // Update UI
       setCandidates((prev) =>
         prev.map((c) => (c._id === editId ? { ...editData } : c))
       );
-
       setEditId(null);
       setEditData({});
       alert("Candidate updated successfully!");
@@ -65,36 +59,37 @@ const Home = () => {
     }
   };
 
-  // Handle form input change
   const handleChange = (e) => {
     const { name, value } = e.target;
     setEditData((prev) => ({ ...prev, [name]: value }));
   };
 
   const filteredCandidates = candidates.filter((candidate) =>
-    candidate?.name.toLowerCase().includes(searchTerm.toLowerCase())
+    candidate?.name?.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
-    <div className="home-container">
-      <div className="top-bar" style={{ marginBottom: "10px" }}>
-        <Link to="/add-candidate" className="add-candidate-btn">
+    <div className="container mt-5">
+      <div className="d-flex justify-content-between align-items-center mb-3">
+        <h2 className="text-primary">Candidate Management</h2>
+        <Link to="/add-candidate" className="btn btn-success">
           Add Candidate
         </Link>
       </div>
 
-      {/* Search */}
-      <input
-        type="text"
-        placeholder="Search by candidate name..."
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-        style={{ padding: "8px", width: "300px", marginBottom: "15px" }}
-      />
+      <div className="mb-4">
+        <input
+          type="text"
+          className="form-control w-50"
+          placeholder="Search by candidate name..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+      </div>
 
-      <div className="candidate-table">
-        <table>
-          <thead>
+      <div className="table-responsive">
+        <table className="table table-bordered table-hover align-middle text-center">
+          <thead className="table-dark">
             <tr>
               <th>Sr No.</th>
               <th>Name</th>
@@ -118,6 +113,7 @@ const Home = () => {
                         <input
                           type="text"
                           name="name"
+                          className="form-control"
                           value={editData.name}
                           onChange={handleChange}
                         />
@@ -126,6 +122,7 @@ const Home = () => {
                         <input
                           type="email"
                           name="email"
+                          className="form-control"
                           value={editData.email}
                           onChange={handleChange}
                         />
@@ -134,6 +131,7 @@ const Home = () => {
                         <input
                           type="text"
                           name="phone"
+                          className="form-control"
                           value={editData.phone}
                           onChange={handleChange}
                         />
@@ -142,6 +140,7 @@ const Home = () => {
                         <input
                           type="text"
                           name="position"
+                          className="form-control"
                           value={editData.position}
                           onChange={handleChange}
                         />
@@ -149,6 +148,7 @@ const Home = () => {
                       <td>
                         <select
                           name="status"
+                          className="form-select"
                           value={editData.status || "pending"}
                           onChange={handleChange}
                         >
@@ -162,18 +162,26 @@ const Home = () => {
                         <input
                           type="text"
                           name="experience"
+                          className="form-control"
                           value={editData.experience || ""}
                           onChange={handleChange}
                         />
                       </td>
                       <td>
-                        <button onClick={handleSaveClick}>Save</button>
-                        <button
-                          onClick={handleCancelClick}
-                          style={{ marginLeft: "5px" }}
-                        >
-                          Cancel
-                        </button>
+                        <div className="d-flex justify-content-center gap-2">
+                          <button
+                            className="btn btn-sm btn-primary"
+                            onClick={handleSaveClick}
+                          >
+                            Save
+                          </button>
+                          <button
+                            className="btn btn-sm btn-secondary"
+                            onClick={handleCancelClick}
+                          >
+                            Cancel
+                          </button>
+                        </div>
                       </td>
                     </>
                   ) : (
@@ -185,7 +193,10 @@ const Home = () => {
                       <td>{candidate.status || "Pending"}</td>
                       <td>{candidate.experience || "-"}</td>
                       <td>
-                        <button onClick={() => handleEditClick(candidate)}>
+                        <button
+                          className="btn btn-sm btn-warning"
+                          onClick={() => handleEditClick(candidate)}
+                        >
                           Edit
                         </button>
                       </td>
@@ -195,7 +206,9 @@ const Home = () => {
               ))
             ) : (
               <tr>
-                <td colSpan="8">No candidates found.</td>
+                <td colSpan="8" className="text-muted">
+                  No candidates found.
+                </td>
               </tr>
             )}
           </tbody>
