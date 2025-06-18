@@ -1,3 +1,4 @@
+/* Container */
 .candidate-card-container {
   max-width: 500px;
   margin: 40px auto;
@@ -9,6 +10,7 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Name Styling */
 .candidate-card-name {
   font-size: 2rem;
   margin-bottom: 15px;
@@ -16,6 +18,7 @@
   text-align: center;
 }
 
+/* Info Text */
 .candidate-card-info {
   font-size: 1rem;
   margin-bottom: 10px;
@@ -23,6 +26,7 @@
   line-height: 1.4;
 }
 
+/* Button Styling */
 .btn {
   display: block;
   width: 100%;
@@ -46,6 +50,7 @@
   background-color: #0056b3;
 }
 
+/* Fallback Message */
 .no-resume-msg {
   margin-top: 20px;
   text-align: center;
@@ -53,8 +58,7 @@
   color: #777;
 }
 
-/* Loading, error, empty states */
-
+/* Loading / Error / Empty States */
 .candidate-card-loading,
 .candidate-card-error,
 .candidate-card-empty {
@@ -68,14 +72,47 @@
   color: red;
 }
 
-/* Responsive */
-@media (max-width: 600px) {
+/* Responsive Styling */
+@media (max-width: 768px) {
   .candidate-card-container {
     margin: 20px;
     padding: 20px;
   }
 
   .candidate-card-name {
+    font-size: 1.75rem;
+  }
+
+  .candidate-card-info {
+    font-size: 0.95rem;
+  }
+
+  .btn {
+    font-size: 0.95rem;
+    padding: 10px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .candidate-card-container {
+    margin: 16px;
+    padding: 16px;
+  }
+
+  .candidate-card-name {
     font-size: 1.5rem;
+  }
+
+  .candidate-card-info {
+    font-size: 0.9rem;
+  }
+
+  .btn {
+    font-size: 0.9rem;
+    padding: 9px 0;
+  }
+
+  .no-resume-msg {
+    font-size: 0.9rem;
   }
 }

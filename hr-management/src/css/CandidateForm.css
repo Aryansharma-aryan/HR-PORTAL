@@ -1,46 +1,43 @@
-/* CandidateForm.css */
-
+/* Base styles */
 body {
   background-color: #f4f6f8;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Container */
 .candidate-form-container {
-  max-width:800px;
+  max-width: 800px;
   margin: 50px auto;
   padding: 40px 30px;
   background-color: #ffffff;
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08); /* Modern soft shadow */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
   border-radius: 12px;
   border: 1px solid #e0e0e0;
   display: flex;
-  /*  flex-direction: column; */
+  flex-direction: column;
   align-items: center;
-  
 }
 
-
+/* Title */
 .form-title {
   text-align: center;
   margin-bottom: 30px;
   font-size: 1.9rem;
   font-weight: 700;
   color: red;
-  text-shadow: 
-  1px 2px red
-  ;
+  text-shadow: 1px 2px red;
   letter-spacing: 1px;
 }
 
-/* Grid layout */
+/* Form Layout */
 .candidate-form {
   display: grid;
   grid-template-columns: 1fr;
   gap: 20px;
+  width: 100%;
 }
 
-/* For future use if you want two-column layout on desktop */
-/*
+/* For wider screens - optional 2-column */
 @media (min-width: 768px) {
   .candidate-form {
     grid-template-columns: 1fr 1fr;
@@ -50,8 +47,8 @@ body {
     grid-column: span 2;
   }
 }
-*/
 
+/* Label and Input */
 .form-group {
   display: flex;
   flex-direction: column;
@@ -61,16 +58,16 @@ body {
   font-weight: 600;
   margin-bottom: 6px;
   color: grey;
-  font-size: 20px;
+  font-size: 1rem;
 }
 
 .form-group input,
 .form-group select {
-  padding: 10px 14px;
+  padding: 12px 14px;
   border-radius: 8px;
   width: 100%;
   border: 2px dotted blue;
-  font-size: 15px;
+  font-size: 1rem;
   transition: border-color 0.3s ease;
 }
 
@@ -84,11 +81,12 @@ body {
   padding: 6px;
 }
 
+/* Submit Button */
 .submit-btn {
   background-color: #1976d2;
   color: #fff;
   padding: 14px;
-  font-size: 16px;
+  font-size: 1rem;
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -105,14 +103,43 @@ body {
   cursor: not-allowed;
 }
 
-/* Responsive */
-@media (max-width: 600px) {
+/* Responsive Tweaks */
+@media (max-width: 768px) {
   .candidate-form-container {
-    margin: 20px;
-    padding: 25px 20px;
+    margin: 30px 16px;
+    padding: 30px 20px;
   }
 
   .form-title {
-    font-size: 1.6rem;
+    font-size: 1.7rem;
+  }
+
+  .form-group label {
+    font-size: 0.95rem;
+  }
+
+  .form-group input,
+  .form-group select {
+    font-size: 0.95rem;
+    padding: 10px 12px;
+  }
+
+  .submit-btn {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-title {
+    font-size: 1.5rem;
+  }
+
+  .form-group input,
+  .form-group select {
+    font-size: 0.9rem;
+  }
+
+  .submit-btn {
+    padding: 12px;
   }
 }

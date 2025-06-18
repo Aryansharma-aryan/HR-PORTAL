@@ -1,29 +1,39 @@
 /* Login.css */
 
+/* Base Styles */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: linear-gradient(to right, lightblue,orange);
+  background: linear-gradient(to right, lightblue, orange); /* ✅ fixed: background-color was used incorrectly */
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+/* Login Container */
 .login-container {
+  width: 100%;
   max-width: 400px;
-  margin: 5vh auto;
   padding: 30px;
   background-color: #ffffff;
   border-radius: 15px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   animation: fadeIn 0.5s ease-in-out;
 }
 
+/* Heading */
 .login-container h1 {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
   color: #333;
+  font-size: 1.8rem;
+  font-weight: 700;
 }
 
+/* Form */
 .login-form {
   display: flex;
   flex-direction: column;
@@ -35,14 +45,16 @@ body {
   border: 1px solid #ccc;
   border-radius: 8px;
   font-size: 16px;
-  transition: border-color 0.3s;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 .login-form input:focus {
   border-color: #2575fc;
+  box-shadow: 0 0 6px rgba(37, 117, 252, 0.3);
   outline: none;
 }
 
+/* Button */
 .login-form button {
   padding: 12px;
   background-color: #2575fc;
@@ -50,29 +62,35 @@ body {
   border: none;
   border-radius: 8px;
   font-size: 16px;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .login-form button:hover {
   background-color: #1a5be6;
+  box-shadow: 0 6px 14px rgba(26, 91, 230, 0.4);
 }
 
+/* Link & Extra Text */
 .login-form p {
   margin-top: 15px;
   text-align: center;
   font-size: 14px;
+  color: #444;
 }
 
 .login-form a {
   color: #2575fc;
   text-decoration: none;
+  font-weight: 500;
 }
 
 .login-form a:hover {
   text-decoration: underline;
 }
 
+/* Error Message */
 .error-message {
   color: red;
   font-size: 14px;
@@ -80,7 +98,7 @@ body {
   text-align: left;
 }
 
-/* Animation for entry */
+/* Entry Animation */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -95,7 +113,7 @@ body {
 /* Responsive Design */
 @media (max-width: 480px) {
   .login-container {
-    margin: 3vh 10px;
+    margin: 20px;
     padding: 20px;
   }
 

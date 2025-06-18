@@ -4,7 +4,7 @@
   padding: 30px 20px;
   background: #fff;
   border-radius: 14px;
-  box-shadow: 0 16px 40px rgb(0 0 0 / 0.1);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   text-align: center;
 }
@@ -16,6 +16,7 @@
   color: #0d1a26;
 }
 
+/* Links */
 .dashboard-links {
   display: flex;
   flex-direction: column;
@@ -30,33 +31,40 @@
   font-weight: 600;
   padding: 14px 25px;
   border-radius: 8px;
-  box-shadow: 0 8px 24px rgb(0 74 173 / 0.3);
   font-size: 1.1rem;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(0, 74, 173, 0.3);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
 }
 
 .dashboard-links a:hover,
 .dashboard-links a:focus {
   background: #00337a;
-  box-shadow: 0 12px 36px rgb(0 51 122 / 0.5);
+  box-shadow: 0 12px 36px rgba(0, 51, 122, 0.5);
+  transform: translateY(-2px);
   outline: none;
 }
 
+/* Medium Screens: horizontal buttons */
 @media (min-width: 480px) {
   .dashboard-links {
     flex-direction: row;
     justify-content: center;
+    flex-wrap: wrap;
   }
+
   .dashboard-links a {
     width: 180px;
   }
 }
 
+/* Small screens */
 @media (max-width: 400px) {
   .dashboard-container {
     margin: 20px 10px;
     padding: 20px 15px;
   }
+
   .dashboard-links a {
     font-size: 1rem;
     padding: 12px 18px;

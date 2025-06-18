@@ -1,4 +1,4 @@
-/* Reset some basics */
+/* Reset basics */
 *,
 *::before,
 *::after {
@@ -24,7 +24,7 @@
   text-shadow: 0 1px 3px rgba(0, 74, 173, 0.5);
 }
 
-/* Loading & Error */
+/* Messages */
 .candidate-list-loading,
 .candidate-list-error,
 .candidate-list-empty {
@@ -34,7 +34,7 @@
   padding: 20px 0;
 }
 
-/* Table container for responsiveness */
+/* Responsive Table Container */
 .table-responsive {
   width: 100%;
   overflow-x: auto;
@@ -43,16 +43,16 @@
   background-color: #fff;
 }
 
-/* Table styles */
+/* Table Styles */
 .candidate-list-table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 720px; /* ensures horizontal scroll on small devices */
+  min-width: 720px; /* Allows horizontal scroll */
   font-size: 1rem;
   color: #333;
 }
 
-/* Table header */
+/* Table Header */
 .candidate-list-table thead {
   background-color: lightblue;
   color: black;
@@ -62,12 +62,11 @@
 
 .candidate-list-table th,
 .candidate-list-table td {
-  width:100%;
-  padding: 7px;
-  border-bottom: 1px solid #e0e0e0;
+  padding: 12px 14px;
   text-align: left;
   vertical-align: middle;
-  border:0.3px solid 
+  border-bottom: 1px solid #e0e0e0;
+  border: 0.3px solid #ddd;
 }
 
 /* Alternate row background */
@@ -75,13 +74,13 @@
   background-color: #f9faff;
 }
 
-/* Row hover effect */
+/* Row Hover */
 .candidate-list-table tbody tr:hover {
   background-color: #e6f0ff;
   transition: background-color 0.25s ease;
 }
 
-/* Download button */
+/* Button */
 .btn-download {
   background-color: #007bff;
   border: none;
@@ -103,7 +102,7 @@
   box-shadow: 0 6px 14px rgba(0, 86, 179, 0.5);
 }
 
-/* Status select */
+/* Status Dropdown */
 .status-select {
   padding: 8px 12px;
   border-radius: 8px;
@@ -124,41 +123,66 @@
   outline: none;
 }
 
-/* Responsive typography scaling */
-@media (max-width: 600px) {
+/* Medium Screens */
+@media (max-width: 768px) {
   .candidate-list-title {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
 
   .candidate-list-table th,
   .candidate-list-table td {
-    padding: 12px 10px;
-    font-size: 0.9rem;
+    padding: 10px 12px;
+    font-size: 0.95rem;
   }
 
   .btn-download {
-    padding: 6px 12px;
-    font-size: 0.85rem;
+    padding: 7px 12px;
+    font-size: 0.88rem;
   }
 
   .status-select {
+    font-size: 0.95rem;
     min-width: 120px;
-    font-size: 0.9rem;
     padding: 6px 10px;
   }
 }
 
-/* Extra small screens */
-@media (max-width: 400px) {
+/* Small Screens */
+@media (max-width: 600px) {
   .candidate-list-container {
-    padding: 0 12px 30px;
+    padding: 0 16px 30px;
   }
 
   .candidate-list-title {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
+  }
+
+  .candidate-list-table th,
+  .candidate-list-table td {
+    font-size: 0.88rem;
+  }
+
+  .btn-download {
+    padding: 6px 10px;
+    font-size: 0.85rem;
+  }
+
+  .status-select {
+    font-size: 0.9rem;
+  }
+}
+
+/* Extra Small Screens */
+@media (max-width: 400px) {
+  .candidate-list-title {
+    font-size: 1.4rem;
   }
 
   .candidate-list-table {
     min-width: 600px;
+  }
+
+  .status-select {
+    min-width: 100px;
   }
 }
