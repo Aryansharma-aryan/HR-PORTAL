@@ -52,7 +52,7 @@ function Signup() {
     setLoading(true);
 
     try {
-      const response = await axios.post("http://localhost:4000/api/register", {
+      const response = await axios.post("https://hr-portal-1-xf68.onrender.com/api/register", {
         name: trimmedData.name,
         email: trimmedData.email,
         password: trimmedData.password,

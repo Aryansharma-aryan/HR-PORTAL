@@ -34,7 +34,7 @@ function Login() {
 
     setLoading(true);
     try {
-      const res = await axios.post("http://localhost:4000/api/login", formData);
+      const res = await axios.post("https://hr-portal-1-xf68.onrender.com/api/login", formData);
 
       // Save token and user info
       localStorage.setItem("token", res.data.token);

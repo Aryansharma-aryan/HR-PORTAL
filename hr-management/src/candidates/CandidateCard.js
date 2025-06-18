@@ -19,7 +19,7 @@ const CandidateCard = () => {
       }
 
       try {
-        const response = await fetch(`http://localhost:4000/api/getCandidateById/${id}`, {
+        const response = await fetch(`https://hr-portal-1-xf68.onrender.com/api/getCandidateById/${id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -48,7 +48,7 @@ const CandidateCard = () => {
       return;
     }
 
-    const downloadUrl = `http://localhost:4000/${candidate.resume}`;
+    const downloadUrl = `https://hr-portal-1-xf68.onrender.com/${candidate.resume}`;
     const filename = candidate.resume.split('/').pop();
 
     const link = document.createElement('a');

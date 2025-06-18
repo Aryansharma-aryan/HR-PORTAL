@@ -19,7 +19,7 @@ const EmployeeList = () => {
     }
 
     try {
-      const response = await fetch('http://localhost:4000/api/getAllEmployee', {
+      const response = await fetch('https://hr-portal-1-xf68.onrender.com/api/getAllEmployee', {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -70,7 +70,7 @@ const EmployeeList = () => {
     }
 
     try {
-      const response = await fetch(`http://localhost:4000/api/deleteCandidate/${id}`, {
+      const response = await fetch(`https://hr-portal-1-xf68.onrender.com/api/deleteCandidate/${id}`, {
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${token}`,

@@ -24,7 +24,7 @@ const CandidateList = () => {
     }
 
     try {
-      const response = await fetch('http://localhost:4000/api/getAllCandidates', {
+      const response = await fetch('https://hr-portal-1-xf68.onrender.com/api/getAllCandidates', {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -56,7 +56,7 @@ const CandidateList = () => {
       return;
     }
 
-    const downloadUrl = `http://localhost:4000/${resumePath}`;
+    const downloadUrl = `https://hr-portal-1-xf68.onrender.com/${resumePath}`;
     const filename = resumePath.split('/').pop();
 
     const link = document.createElement('a');
@@ -76,7 +76,7 @@ const CandidateList = () => {
 
     try {
       if (value === 'selected') {
-        const res = await fetch(`http://localhost:4000/api/candidatetoemployee/${id}`, {
+        const res = await fetch(`https://hr-portal-1-xf68.onrender.com/api/candidatetoemployee/${id}`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -92,7 +92,7 @@ const CandidateList = () => {
         alert('Candidate successfully moved to employee.');
       }
 
-      const statusRes = await fetch(`http://localhost:4000/api/updateCandidateStatus/${id}`, {
+      const statusRes = await fetch(`https://hr-portal-1-xf68.onrender.com/api/updateCandidateStatus/${id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -140,7 +140,7 @@ const CandidateList = () => {
     if (!token) return alert('No auth token found.');
 
     try {
-      const response = await fetch(`http://localhost:4000/api/updateCandidate/${id}`, {
+      const response = await fetch(`https://hr-portal-1-xf68.onrender.com/api/updateCandidate/${id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -169,7 +169,7 @@ const CandidateList = () => {
     if (!token) return alert('No auth token found.');
 
     try {
-      const response = await fetch(`http://localhost:4000/api/deleteCandidate/${id}`, {
+      const response = await fetch(`https://hr-portal-1-xf68.onrender.com/api/deleteCandidate/${id}`, {
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${token}`,
