@@ -1,8 +1,0 @@
-.main-content {
-  margin-left: 220px; /* 👈 same as sidebar width */
-  padding: 2rem;
-  min-height: 100vh;
-  background-color: #fff; /* Optional */
-  box-sizing: border-box;
-}
-

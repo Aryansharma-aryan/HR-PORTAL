@@ -25,23 +25,34 @@ function App() {
 
   return (
     <div className="App">
+      {/* Navbar */}
       {isAuthenticated && !hideNavAndSidebar && <Navbar />}
-      {isAuthenticated && !hideNavAndSidebar && <Sidebar />}
 
-      <div className="main-content">
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Signup />} />
+      {/* Sidebar and Main Content */}
+      <div style={{ display: 'flex' }}>
+        {/* Sidebar */}
+        {isAuthenticated && !hideNavAndSidebar && (
+          <div style={{ width: '250px', minHeight: '100vh', background: '#f5f5f5' }}>
+            <Sidebar />
+          </div>
+        )}
 
-          {/* Protected routes */}
-          <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
-          <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
-          <Route path="/candidate-list" element={<ProtectedRoute><CandidateList /></ProtectedRoute>} />
-          <Route path="/candidates/:id" element={<ProtectedRoute><CandidateCard /></ProtectedRoute>} />
-          <Route path="/employee-list" element={<ProtectedRoute><EmployeeList /></ProtectedRoute>} />
-          <Route path="/add-candidate" element={<ProtectedRoute><CandidateForm /></ProtectedRoute>} />
-          <Route path="/attendence" element={<ProtectedRoute><Attendence /></ProtectedRoute>} />
-        </Routes>
+        {/* Main Content */}
+        <div style={{ flex: 1, padding: '20px' }}>
+          <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Signup />} />
+
+            {/* Protected Routes */}
+            <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
+            <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+            <Route path="/candidate-list" element={<ProtectedRoute><CandidateList /></ProtectedRoute>} />
+            <Route path="/candidates/:id" element={<ProtectedRoute><CandidateCard /></ProtectedRoute>} />
+            <Route path="/employee-list" element={<ProtectedRoute><EmployeeList /></ProtectedRoute>} />
+            <Route path="/add-candidate" element={<ProtectedRoute><CandidateForm /></ProtectedRoute>} />
+            <Route path="/attendence" element={<ProtectedRoute><Attendence /></ProtectedRoute>} />
+          </Routes>
+        </div>
       </div>
     </div>
   );
