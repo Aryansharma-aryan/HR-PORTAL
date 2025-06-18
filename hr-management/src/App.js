@@ -9,7 +9,7 @@ import Dashboard from './components/Dashboard';
 import CandidateList from './candidates/CandidateList';
 import CandidateCard from './candidates/CandidateCard';
 import EmployeeList from './employee/EmployeeList';
-import Sidebar from './components/Sidebar';
+
 import CandidateForm from './candidates/CandidateForm';
 import Attendence from './pages/Attendence';
 import ProtectedRoute from './components/protectedRoute';
@@ -30,12 +30,7 @@ function App() {
 
       {/* Sidebar and Main Content */}
       <div style={{ display: 'flex' }}>
-        {/* Sidebar */}
-        {isAuthenticated && !hideNavAndSidebar && (
-          <div style={{ width: '250px', minHeight: '100vh', background: '#f5f5f5' }}>
-            <Sidebar />
-          </div>
-        )}
+        
 
         {/* Main Content */}
         <div style={{ flex: 1, padding: '20px' }}>
