@@ -1,24 +1,14 @@
 /* Login.css */
 
 /* Base Styles */
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(to right, lightblue, orange); /* ✅ fixed: background-color was used incorrectly */
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+
 
 /* Login Container */
 .login-container {
-  width: 100%;
-  max-width: 400px;
+  width: 70%;
+  
   padding: 30px;
-  background-color: #ffffff;
+  
   border-radius: 15px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   animation: fadeIn 0.5s ease-in-out;
