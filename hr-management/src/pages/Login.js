@@ -39,12 +39,13 @@ function Login() {
         formData
       );
 
+      // Save token and user
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("user", JSON.stringify(res.data.user));
 
+      // Update context and redirect immediately
       login(res.data.token, res.data.user);
-
-      navigate("/");
+      Promise.resolve().then(() => navigate("/", { replace: true }));
     } catch (err) {
       console.error(err);
       setError(err.response?.data?.message || "Login failed");
@@ -83,8 +84,10 @@ function Login() {
               value={formData.email}
               onChange={handleChange}
               required
+              disabled={loading}
             />
           </div>
+
           <div className="mb-3">
             <input
               type="password"
@@ -94,6 +97,7 @@ function Login() {
               value={formData.password}
               onChange={handleChange}
               required
+              disabled={loading}
             />
           </div>
 
@@ -103,10 +107,21 @@ function Login() {
 
           <button
             type="submit"
-            className="btn btn-primary w-100"
+            className="btn btn-primary w-100 d-flex align-items-center justify-content-center"
             disabled={loading}
           >
-            {loading ? "Logging in..." : "Login"}
+            {loading ? (
+              <>
+                <span
+                  className="spinner-border spinner-border-sm me-2"
+                  role="status"
+                  aria-hidden="true"
+                ></span>
+                Logging in...
+              </>
+            ) : (
+              "Login"
+            )}
           </button>
 
           <div className="mt-3 text-center">
